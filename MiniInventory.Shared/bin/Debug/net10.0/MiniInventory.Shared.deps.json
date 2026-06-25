@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "MiniInventory.Shared/1.0.0": {
+        "runtime": {
+          "MiniInventory.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MiniInventory.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

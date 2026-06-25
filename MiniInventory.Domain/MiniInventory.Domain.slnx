@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../MiniInventory.API/MiniInventory.API.csproj" />
+  <Project Path="../MiniInventory.Application/MiniInventory.Application.csproj" />
+  <Project Path="../MiniInventory.Shared/MiniInventory.Shared.csproj" />
+  <Project Path="../Minilnventory.Infrastructure/Minilnventory.Infrastructure.csproj" />
+  <Project Path="MiniInventory.Domain/MiniInventory.Domain.csproj" />
+</Solution>
