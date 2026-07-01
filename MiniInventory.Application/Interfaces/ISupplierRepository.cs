@@ -9,4 +9,5 @@ public interface ISupplierRepository
     Task<int> CreateAsync(Supplier supplier);
     Task<int> UpdateAsync(Supplier supplier);
     Task<int> DeleteAsync(int id);
+    Task<bool> HasStockInsAsync(int supplierId);
 }

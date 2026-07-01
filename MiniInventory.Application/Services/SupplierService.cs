@@ -43,38 +43,46 @@ public class SupplierService : ISupplierService
         };
     }
 
-    // ✅ FIXED: Added null coalescing
     public async Task<int> CreateAsync(SupplierCreateDto dto)
     {
         var supplier = new Supplier
         {
-            SupplierName = dto.SupplierName ?? string.Empty,  // ✅ FIXED
+            SupplierName = dto.SupplierName ?? string.Empty,
             ContactNumber = dto.ContactNumber,
             Email = dto.Email,
             Address = dto.Address,
-            IsActive = true,
+            IsActive = true,  // ✅ Always active when created
             CreatedDate = DateTime.Now
         };
 
         return await _supplierRepository.CreateAsync(supplier);
     }
 
-    // ✅ FIXED: Added null coalescing
     public async Task<int> UpdateAsync(int id, SupplierCreateDto dto)
     {
         var existing = await _supplierRepository.GetByIdAsync(id);
         if (existing == null) return 0;
 
-        existing.SupplierName = dto.SupplierName ?? string.Empty;  // ✅ FIXED
+        existing.SupplierName = dto.SupplierName ?? string.Empty;
         existing.ContactNumber = dto.ContactNumber;
         existing.Email = dto.Email;
         existing.Address = dto.Address;
+        // ✅ Don't update IsActive from DTO - keep it as is
 
         return await _supplierRepository.UpdateAsync(existing);
     }
 
     public async Task<int> DeleteAsync(int id)
     {
+        var supplier = await _supplierRepository.GetByIdAsync(id);
+        if (supplier == null) return 0;
+
+        var hasStockIns = await _supplierRepository.HasStockInsAsync(id);
+        if (hasStockIns)
+        {
+            throw new Exception("Cannot delete supplier with linked stock records. Please delete the stock records first.");
+        }
+
         return await _supplierRepository.DeleteAsync(id);
     }
 }

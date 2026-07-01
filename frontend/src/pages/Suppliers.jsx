@@ -169,7 +169,7 @@ const Suppliers = () => {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
-              placeholder="Supplier Name *"
+              placeholder="Supplier Name"
               value={formData.supplierName}
               onChange={(e) => setFormData({ ...formData, supplierName: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -191,7 +191,7 @@ const Suppliers = () => {
             />
             <input
               type="text"
-              placeholder="Address *"
+              placeholder="Address"
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"

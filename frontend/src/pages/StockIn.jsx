@@ -135,7 +135,7 @@ const StockIn = () => {
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             >
-              <option value="">Select Item *</option>
+              <option value="">Select Item</option>
               {items.map((item) => (
                 <option key={item.itemId} value={item.itemId}>{item.itemName}</option>
               ))}
@@ -146,14 +146,14 @@ const StockIn = () => {
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             >
-              <option value="">Select Supplier *</option>
+              <option value="">Select Supplier</option>
               {suppliers.map((sup) => (
                 <option key={sup.supplierId} value={sup.supplierId}>{sup.supplierName}</option>
               ))}
             </select>
             <input
               type="number"
-              placeholder="Quantity *"
+              placeholder="Quantity"
               value={formData.quantity}
               onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -162,7 +162,7 @@ const StockIn = () => {
             <input
               type="number"
               step="0.01"
-              placeholder="Unit Cost *"
+              placeholder="Unit Cost"
               value={formData.costPrice}
               onChange={(e) => setFormData({ ...formData, costPrice: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"

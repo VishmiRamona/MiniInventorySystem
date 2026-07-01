@@ -44,4 +44,9 @@ public class SupplierRepository : ISupplierRepository
         _context.Suppliers.Remove(supplier);
         return await _context.SaveChangesAsync();
     }
+
+    public async Task<bool> HasStockInsAsync(int supplierId)
+    {
+        return await _context.StockIns.AnyAsync(s => s.SupplierId == supplierId);
+    }
 }

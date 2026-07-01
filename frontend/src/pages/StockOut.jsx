@@ -125,14 +125,14 @@ const StockOut = () => {
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             >
-              <option value="">Select Item *</option>
+              <option value="">Select Item</option>
               {items.map((item) => (
                 <option key={item.itemId} value={item.itemId}>{item.itemName}</option>
               ))}
             </select>
             <input
               type="number"
-              placeholder="Quantity *"
+              placeholder="Quantity"
               value={formData.quantity}
               onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -144,7 +144,7 @@ const StockOut = () => {
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             >
-              <option value="">Reason *</option>
+              <option value="">Reason</option>
               <option value="Sale">Sale</option>
               <option value="Damage">Damage</option>
               <option value="Internal Use">Internal Use</option>

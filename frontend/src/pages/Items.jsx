@@ -203,20 +203,20 @@ const Items = () => {
             <input
               type="text"
               placeholder="Item Code (auto-generated)"
-              value={formData.itemCode || 'Auto-generated'}
+              value={formData.itemCode || 'Code'}
               className="border border-gray-300 rounded-lg px-4 py-2.5 bg-gray-50 text-gray-500 cursor-not-allowed"
               disabled
             />
             <input
               type="text"
               placeholder="Barcode (auto-generated)"
-              value={formData.barcode || 'Auto-generated'}
+              value={formData.barcode || 'Barcode'}
               className="border border-gray-300 rounded-lg px-4 py-2.5 bg-gray-50 text-gray-500 cursor-not-allowed"
               disabled
             />
             <input
               type="text"
-              placeholder="Book Name *"
+              placeholder="Book Name"
               value={formData.itemName}
               onChange={(e) => setFormData({ ...formData, itemName: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -228,7 +228,7 @@ const Items = () => {
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             >
-              <option value="">Select Category *</option>
+              <option value="">Select Category</option>
               {categories.map((cat) => (
                 <option key={cat.categoryId} value={cat.categoryId}>{cat.categoryName}</option>
               ))}
@@ -239,7 +239,7 @@ const Items = () => {
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             >
-              <option value="">Select Supplier *</option>
+              <option value="">Select Supplier</option>
               {suppliers.map((sup) => (
                 <option key={sup.supplierId} value={sup.supplierId}>{sup.supplierName}</option>
               ))}
@@ -247,7 +247,7 @@ const Items = () => {
             <input
               type="number"
               step="0.01"
-              placeholder="Cost Price *"
+              placeholder="Cost Price"
               value={formData.costPrice}
               onChange={(e) => setFormData({ ...formData, costPrice: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -256,7 +256,7 @@ const Items = () => {
             <input
               type="number"
               step="0.01"
-              placeholder="Selling Price *"
+              placeholder="Selling Price"
               value={formData.sellingPrice}
               onChange={(e) => setFormData({ ...formData, sellingPrice: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"

@@ -161,7 +161,7 @@ const Categories = () => {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
-              placeholder="Category Name *"
+              placeholder="Category Name"
               value={formData.categoryName}
               onChange={(e) => setFormData({ ...formData, categoryName: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
