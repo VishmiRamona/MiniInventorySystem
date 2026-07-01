@@ -66,4 +66,11 @@ public class ItemRepository : IItemRepository
         _context.Items.Remove(item);
         return await _context.SaveChangesAsync();
     }
+
+  
+    public async Task<Category?> GetCategoryByIdAsync(int categoryId)
+    {
+        return await _context.Categories
+            .FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+    }
 }

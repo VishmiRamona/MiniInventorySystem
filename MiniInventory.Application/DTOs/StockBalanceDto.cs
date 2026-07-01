@@ -11,4 +11,5 @@ public class StockBalanceDto
     public int CurrentBalance { get; set; }
     public int ReorderLevel { get; set; }
     public string? StockStatus { get; set; } // "Good Stock", "Low Stock", "Out of Stock"
+    public decimal CostPrice { get; set; }
 }

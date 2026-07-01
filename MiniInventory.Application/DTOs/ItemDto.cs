@@ -14,4 +14,6 @@ public class ItemDto
     public decimal SellingPrice { get; set; }
     public int ReorderLevel { get; set; }
     public bool IsActive { get; set; }
+    public string? StockStatus { get; set; }
+    public decimal CurrentBalance { get; set; }
 }

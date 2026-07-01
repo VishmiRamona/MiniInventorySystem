@@ -1,14 +1,17 @@
-﻿namespace MiniInventory.Domain.Entities;
+﻿using System;
 
-public class StockOut
+namespace MiniInventory.Domain.Entities
 {
-    public int StockOutId { get; set; }
-    public int ItemId { get; set; }
-    public int Quantity { get; set; }
-    public string? Reason { get; set; }
-    public DateTime StockOutDate { get; set; }
-    public DateTime CreatedDate { get; set; }
+    public class StockOut
+    {
+        public int StockOutId { get; set; }
+        public int ItemId { get; set; }
+        public int Quantity { get; set; }
+        public string Reason { get; set; } = string.Empty;
+        public DateTime StockOutDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-    // Navigation Property
-    public Item? Item { get; set; }
+        // Navigation property (optional, nullable)
+        public virtual Item? Item { get; set; }
+    }
 }

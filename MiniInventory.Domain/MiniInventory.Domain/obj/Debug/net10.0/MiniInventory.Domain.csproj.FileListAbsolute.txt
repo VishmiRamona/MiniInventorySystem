@@ -5,6 +5,7 @@ C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInv
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\MiniInventory.Domain.AssemblyInfoInputs.cache
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\MiniInventory.Domain.AssemblyInfo.cs
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\MiniInventory.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\MiniInventory.Domain.sourcelink.json
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\MiniInventory.Domain.dll
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\refint\MiniInventory.Domain.dll
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Domain\MiniInventory.Domain\obj\Debug\net10.0\MiniInventory.Domain.pdb

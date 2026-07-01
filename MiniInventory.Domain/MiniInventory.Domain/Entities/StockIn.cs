@@ -1,4 +1,4 @@
-﻿using MiniInventory.Domain.Entities;
+﻿using System;
 
 namespace MiniInventory.Domain.Entities;
 
@@ -12,7 +12,7 @@ public class StockIn
     public DateTime StockInDate { get; set; }
     public DateTime CreatedDate { get; set; }
 
-    // Navigation Properties
-    public Item? Item { get; set; }
-    public Supplier? Supplier { get; set; }
+    // ✅ Navigation Properties (must exist)
+    public virtual Item? Item { get; set; }
+    public virtual Supplier? Supplier { get; set; }
 }

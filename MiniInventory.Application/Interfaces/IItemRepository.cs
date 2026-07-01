@@ -10,4 +10,5 @@ public interface IItemRepository
     Task<int> CreateAsync(Item item);
     Task<int> UpdateAsync(Item item);
     Task<int> DeleteAsync(int id);
+    Task<Category?> GetCategoryByIdAsync(int categoryId);  // ✅ ADD THIS
 }

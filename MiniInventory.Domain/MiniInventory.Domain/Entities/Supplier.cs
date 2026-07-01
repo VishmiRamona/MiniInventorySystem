@@ -1,16 +1,20 @@
-﻿namespace MiniInventory.Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
 
-public class Supplier
+namespace MiniInventory.Domain.Entities
 {
-    public int SupplierId { get; set; }
-    public string? SupplierName { get; set; }
-    public string? ContactNumber { get; set; }
-    public string? Email { get; set; }
-    public string? Address { get; set; }
-    public bool IsActive { get; set; }
-    public DateTime CreatedDate { get; set; }
+    public class Supplier
+    {
+        public int SupplierId { get; set; }
+        public string SupplierName { get; set; } = string.Empty;
+        public string? ContactNumber { get; set; }
+        public string? Email { get; set; }
+        public string? Address { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-    // Navigation Properties (Collections)
-    public ICollection<Item>? Items { get; set; }
-    public ICollection<StockIn>? StockIns { get; set; }
+        // Navigation property (one-to-many)
+        // Initialize to avoid null reference warnings
+        public virtual ICollection<Item> Items { get; set; } = new List<Item>();
+    }
 }

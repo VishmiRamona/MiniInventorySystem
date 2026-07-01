@@ -27,7 +27,6 @@ public class SupplierService : ISupplierService
         });
     }
 
-    // FIXED: Added '?' to return type
     public async Task<SupplierDto?> GetByIdAsync(int id)
     {
         var supplier = await _supplierRepository.GetByIdAsync(id);
@@ -44,11 +43,12 @@ public class SupplierService : ISupplierService
         };
     }
 
+    // ✅ FIXED: Added null coalescing
     public async Task<int> CreateAsync(SupplierCreateDto dto)
     {
         var supplier = new Supplier
         {
-            SupplierName = dto.SupplierName,
+            SupplierName = dto.SupplierName ?? string.Empty,  // ✅ FIXED
             ContactNumber = dto.ContactNumber,
             Email = dto.Email,
             Address = dto.Address,
@@ -59,12 +59,13 @@ public class SupplierService : ISupplierService
         return await _supplierRepository.CreateAsync(supplier);
     }
 
+    // ✅ FIXED: Added null coalescing
     public async Task<int> UpdateAsync(int id, SupplierCreateDto dto)
     {
         var existing = await _supplierRepository.GetByIdAsync(id);
         if (existing == null) return 0;
 
-        existing.SupplierName = dto.SupplierName;
+        existing.SupplierName = dto.SupplierName ?? string.Empty;  // ✅ FIXED
         existing.ContactNumber = dto.ContactNumber;
         existing.Email = dto.Email;
         existing.Address = dto.Address;

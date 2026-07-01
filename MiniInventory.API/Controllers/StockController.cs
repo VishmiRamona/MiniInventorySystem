@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniInventory.Application.DTOs;
 using MiniInventory.Application.Interfaces;
+using MiniInventory.Domain.Entities;
 using MiniInventory.Shared;
 
 namespace MiniInventory.API.Controllers;
@@ -10,11 +11,20 @@ namespace MiniInventory.API.Controllers;
 public class StockController : ControllerBase
 {
     private readonly IStockService _stockService;
+    private readonly IStockInRepository _stockInRepository;
+    private readonly IStockOutRepository _stockOutRepository;
 
-    public StockController(IStockService stockService)
+    public StockController(
+        IStockService stockService,
+        IStockInRepository stockInRepository,
+        IStockOutRepository stockOutRepository)
     {
         _stockService = stockService;
+        _stockInRepository = stockInRepository;
+        _stockOutRepository = stockOutRepository;
     }
+
+    // ===== EXISTING ENDPOINTS =====
 
     [HttpPost("in")]
     public async Task<IActionResult> StockIn([FromBody] StockInCreateDto dto)
@@ -90,6 +100,60 @@ public class StockController : ControllerBase
         catch (Exception ex)
         {
             var errorResponse = CommonResponse<IEnumerable<ItemDto>>.ErrorResponse("An error occurred while retrieving low stock items.", new List<string> { ex.Message });
+            return StatusCode(500, errorResponse);
+        }
+    }
+
+    // ===== FIXED: GET ENDPOINTS RETURNING DTOS =====
+
+    [HttpGet("in")]
+    public async Task<IActionResult> GetStockIn()
+    {
+        try
+        {
+            var stockIns = await _stockInRepository.GetAllAsync();
+            var dtos = stockIns.Select(s => new StockInDto
+            {
+                StockInId = s.StockInId,
+                ItemId = s.ItemId,
+                ItemName = s.Item?.ItemName ?? "N/A",
+                SupplierId = s.SupplierId,
+                SupplierName = s.Supplier?.SupplierName ?? "N/A",
+                Quantity = s.Quantity,
+                CostPrice = s.CostPrice,
+                StockInDate = s.StockInDate
+            });
+            var successResponse = CommonResponse<IEnumerable<StockInDto>>.SuccessResponse(dtos, "Stock In records retrieved successfully.");
+            return Ok(successResponse);
+        }
+        catch (Exception ex)
+        {
+            var errorResponse = CommonResponse<IEnumerable<StockInDto>>.ErrorResponse("An error occurred while retrieving Stock In records.", new List<string> { ex.Message });
+            return StatusCode(500, errorResponse);
+        }
+    }
+
+    [HttpGet("out")]
+    public async Task<IActionResult> GetStockOut()
+    {
+        try
+        {
+            var stockOuts = await _stockOutRepository.GetAllAsync();
+            var dtos = stockOuts.Select(s => new StockOutDto
+            {
+                StockOutId = s.StockOutId,
+                ItemId = s.ItemId,
+                ItemName = s.Item?.ItemName ?? "N/A",
+                Quantity = s.Quantity,
+                Reason = s.Reason,
+                StockOutDate = s.StockOutDate
+            });
+            var successResponse = CommonResponse<IEnumerable<StockOutDto>>.SuccessResponse(dtos, "Stock Out records retrieved successfully.");
+            return Ok(successResponse);
+        }
+        catch (Exception ex)
+        {
+            var errorResponse = CommonResponse<IEnumerable<StockOutDto>>.ErrorResponse("An error occurred while retrieving Stock Out records.", new List<string> { ex.Message });
             return StatusCode(500, errorResponse);
         }
     }

@@ -28,12 +28,10 @@ public class StockService : IStockService
     {
         try
         {
-            // Validate Item exists
             var item = await _itemRepository.GetByIdAsync(dto.ItemId);
             if (item == null)
                 throw new Exception($"Item with ID {dto.ItemId} not found.");
 
-            // Create StockIn record
             var stockIn = new StockIn
             {
                 ItemId = dto.ItemId,
@@ -46,14 +44,13 @@ public class StockService : IStockService
 
             await _stockInRepository.CreateAsync(stockIn);
 
-            // Return DTO
             return new StockInDto
             {
                 StockInId = stockIn.StockInId,
                 ItemId = stockIn.ItemId,
-                ItemName = item.ItemName,
+                ItemName = item.ItemName ?? "N/A",
                 SupplierId = stockIn.SupplierId,
-                SupplierName = "Supplier",
+                SupplierName = item.Supplier?.SupplierName ?? "N/A",
                 Quantity = stockIn.Quantity,
                 CostPrice = stockIn.CostPrice,
                 StockInDate = stockIn.StockInDate
@@ -70,12 +67,10 @@ public class StockService : IStockService
     {
         try
         {
-            // Validate Item exists
             var item = await _itemRepository.GetByIdAsync(dto.ItemId);
             if (item == null)
                 throw new Exception($"Item with ID {dto.ItemId} not found.");
 
-            // Calculate current balance to check if we have enough stock
             var stockIns = await _stockInRepository.GetByItemIdAsync(dto.ItemId);
             var stockOuts = await _stockOutRepository.GetByItemIdAsync(dto.ItemId);
             var currentBalance = stockIns.Sum(s => s.Quantity) - stockOuts.Sum(s => s.Quantity);
@@ -83,24 +78,22 @@ public class StockService : IStockService
             if (currentBalance < dto.Quantity)
                 throw new Exception($"Insufficient stock. Current balance: {currentBalance}, Requested: {dto.Quantity}");
 
-            // Create StockOut record
             var stockOut = new StockOut
             {
                 ItemId = dto.ItemId,
                 Quantity = dto.Quantity,
-                Reason = dto.Reason,
+                Reason = dto.Reason ?? "Sale",
                 StockOutDate = DateTime.Now,
                 CreatedDate = DateTime.Now
             };
 
             await _stockOutRepository.CreateAsync(stockOut);
 
-            // Return DTO
             return new StockOutDto
             {
                 StockOutId = stockOut.StockOutId,
                 ItemId = stockOut.ItemId,
-                ItemName = item.ItemName,
+                ItemName = item.ItemName ?? "N/A",
                 Quantity = stockOut.Quantity,
                 Reason = stockOut.Reason,
                 StockOutDate = stockOut.StockOutDate
@@ -147,7 +140,8 @@ public class StockService : IStockService
                     TotalStockOut = totalOut,
                     CurrentBalance = currentBalance,
                     ReorderLevel = item.ReorderLevel,
-                    StockStatus = stockStatus
+                    StockStatus = stockStatus,
+                    CostPrice = item.CostPrice
                 });
             }
 
@@ -188,7 +182,9 @@ public class StockService : IStockService
                         CostPrice = item.CostPrice,
                         SellingPrice = item.SellingPrice,
                         ReorderLevel = item.ReorderLevel,
-                        IsActive = item.IsActive
+                        IsActive = item.IsActive,
+                        StockStatus = currentBalance <= 0 ? "Out of Stock" : "Low Stock",
+                        CurrentBalance = currentBalance
                     });
                 }
             }

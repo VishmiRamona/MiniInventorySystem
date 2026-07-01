@@ -5,6 +5,7 @@ C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInv
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\MiniInventory.Shared.AssemblyInfoInputs.cache
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\MiniInventory.Shared.AssemblyInfo.cs
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\MiniInventory.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\MiniInventory.Shared.sourcelink.json
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\MiniInventory.Shared.dll
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\refint\MiniInventory.Shared.dll
 C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\MiniInventory.Shared\obj\Debug\net10.0\MiniInventory.Shared.pdb
