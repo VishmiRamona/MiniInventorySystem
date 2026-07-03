@@ -14,7 +14,6 @@ public class StockInRepository : IStockInRepository
         _context = context;
     }
 
-    // ✅ FIXED: Added .Include() to load Item and Supplier
     public async Task<IEnumerable<StockIn>> GetAllAsync()
     {
         return await _context.StockIns

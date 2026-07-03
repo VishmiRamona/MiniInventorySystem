@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniInventory.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90896672fbfa7831f0e50ca56ce7c14bcef79afb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10490dd37c2d03bf594e1d90ee16840e69c4e1a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniInventory.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniInventory.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

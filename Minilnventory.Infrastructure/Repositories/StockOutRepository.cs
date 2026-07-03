@@ -14,7 +14,6 @@ public class StockOutRepository : IStockOutRepository
         _context = context;
     }
 
-    // ✅ FIXED: Added .Include() to load Item
     public async Task<IEnumerable<StockOut>> GetAllAsync()
     {
         return await _context.StockOuts

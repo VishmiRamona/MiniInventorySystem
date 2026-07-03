@@ -39,12 +39,11 @@ public class CategoryService : ICategoryService
         };
     }
 
-    // ✅ FIXED: Added null coalescing
     public async Task<int> CreateAsync(CategoryCreateDto dto)
     {
         var category = new Category
         {
-            CategoryName = dto.CategoryName ?? string.Empty,  // ✅ FIXED
+            CategoryName = dto.CategoryName ?? string.Empty,
             Description = dto.Description,
             IsActive = true,
             CreatedDate = DateTime.Now
@@ -53,13 +52,12 @@ public class CategoryService : ICategoryService
         return await _categoryRepository.CreateAsync(category);
     }
 
-    // ✅ FIXED: Added null coalescing
     public async Task<int> UpdateAsync(int id, CategoryCreateDto dto)
     {
         var existing = await _categoryRepository.GetByIdAsync(id);
         if (existing == null) return 0;
 
-        existing.CategoryName = dto.CategoryName ?? string.Empty;  // ✅ FIXED
+        existing.CategoryName = dto.CategoryName ?? string.Empty;
         existing.Description = dto.Description;
 
         return await _categoryRepository.UpdateAsync(existing);

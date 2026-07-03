@@ -51,7 +51,7 @@ public class SupplierService : ISupplierService
             ContactNumber = dto.ContactNumber,
             Email = dto.Email,
             Address = dto.Address,
-            IsActive = true,  // ✅ Always active when created
+            IsActive = true,
             CreatedDate = DateTime.Now
         };
 
@@ -67,7 +67,6 @@ public class SupplierService : ISupplierService
         existing.ContactNumber = dto.ContactNumber;
         existing.Email = dto.Email;
         existing.Address = dto.Address;
-        // ✅ Don't update IsActive from DTO - keep it as is
 
         return await _supplierRepository.UpdateAsync(existing);
     }

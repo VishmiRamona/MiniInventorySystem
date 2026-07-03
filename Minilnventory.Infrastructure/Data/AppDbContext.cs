@@ -75,7 +75,7 @@ public class AppDbContext : DbContext
             entity.HasIndex(e => e.SupplierId);
         });
 
-        // ✅ FIXED: Configure StockIn with navigation properties
+        // Configure StockIn with navigation properties
         modelBuilder.Entity<StockIn>(entity =>
         {
             entity.HasKey(e => e.StockInId);
@@ -84,7 +84,6 @@ public class AppDbContext : DbContext
             entity.Property(e => e.StockInDate).HasDefaultValueSql("GETDATE()");
             entity.Property(e => e.CreatedDate).HasDefaultValueSql("GETDATE()");
 
-            // ✅ FIXED: Using navigation properties
             entity.HasOne(e => e.Item)
                 .WithMany()
                 .HasForeignKey(e => e.ItemId)
@@ -96,7 +95,7 @@ public class AppDbContext : DbContext
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
-        // ✅ FIXED: Configure StockOut with navigation properties
+        // Configure StockOut with navigation properties
         modelBuilder.Entity<StockOut>(entity =>
         {
             entity.HasKey(e => e.StockOutId);
@@ -105,7 +104,6 @@ public class AppDbContext : DbContext
             entity.Property(e => e.StockOutDate).HasDefaultValueSql("GETDATE()");
             entity.Property(e => e.CreatedDate).HasDefaultValueSql("GETDATE()");
 
-            // ✅ FIXED: Using navigation properties
             entity.HasOne(e => e.Item)
                 .WithMany()
                 .HasForeignKey(e => e.ItemId)

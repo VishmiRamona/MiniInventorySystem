@@ -10,8 +10,6 @@ namespace MiniInventory.Domain.Entities
         public string Reason { get; set; } = string.Empty;
         public DateTime StockOutDate { get; set; }
         public DateTime CreatedDate { get; set; }
-
-        // Navigation property (optional, nullable)
         public virtual Item? Item { get; set; }
     }
 }

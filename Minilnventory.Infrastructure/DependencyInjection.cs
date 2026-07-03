@@ -24,7 +24,7 @@ public static class DependencyInjection
         services.AddScoped<IStockInRepository, StockInRepository>();
         services.AddScoped<IStockOutRepository, StockOutRepository>();
 
-        // Register Services (Phase 5)
+        // Register Services
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ISupplierService, SupplierService>();
         services.AddScoped<IItemService, ItemService>();

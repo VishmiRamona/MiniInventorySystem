@@ -15,8 +15,6 @@ namespace MiniInventory.Domain.Entities
         public int ReorderLevel { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
-
-        // Navigation properties (nullable because EF Core loads them)
         public virtual Category? Category { get; set; }
         public virtual Supplier? Supplier { get; set; }
     }

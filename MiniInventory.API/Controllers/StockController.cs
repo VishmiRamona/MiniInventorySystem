@@ -104,7 +104,7 @@ public class StockController : ControllerBase
         }
     }
 
-    // ===== FIXED: GET ENDPOINTS RETURNING DTOS =====
+    // ===== GET endpoints for Stock In and Out =====
 
     [HttpGet("in")]
     public async Task<IActionResult> GetStockIn()

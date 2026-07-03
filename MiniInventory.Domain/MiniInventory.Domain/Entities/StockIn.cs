@@ -11,8 +11,6 @@ public class StockIn
     public decimal CostPrice { get; set; }
     public DateTime StockInDate { get; set; }
     public DateTime CreatedDate { get; set; }
-
-    // ✅ Navigation Properties (must exist)
     public virtual Item? Item { get; set; }
     public virtual Supplier? Supplier { get; set; }
 }

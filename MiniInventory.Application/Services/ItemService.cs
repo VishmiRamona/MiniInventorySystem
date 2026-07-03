@@ -75,17 +75,13 @@ public class ItemService : IItemService
         });
     }
 
-    // ✅ FIXED: Auto-generate ItemCode based on Category
     public async Task<int> CreateAsync(ItemCreateDto dto)
     {
-        // ✅ Get the category to determine prefix
         var category = await _itemRepository.GetCategoryByIdAsync(dto.CategoryId);
         var prefix = GetCategoryPrefix(category?.CategoryName ?? "");
 
-        // ✅ Get all existing items
         var allItems = await _itemRepository.GetAllAsync();
 
-        // ✅ Find the highest number for this prefix
         var maxNumber = 0;
         foreach (var existingItem in allItems)
         {
@@ -100,11 +96,9 @@ public class ItemService : IItemService
             }
         }
 
-        // ✅ Generate new code: prefix + next number (3 digits)
         var nextNumber = (maxNumber + 1).ToString("D3");
         var itemCode = prefix + nextNumber;
 
-        // ✅ Generate 13-digit Barcode (ISBN-like format)
         var random = new Random();
         var barcode = "978" + random.Next(100000000, 999999999).ToString();
 
@@ -125,7 +119,6 @@ public class ItemService : IItemService
         return await _itemRepository.CreateAsync(item);
     }
 
-    // ✅ Helper: Get category prefix
     private string GetCategoryPrefix(string categoryName)
     {
         if (string.IsNullOrEmpty(categoryName)) return "GEN";

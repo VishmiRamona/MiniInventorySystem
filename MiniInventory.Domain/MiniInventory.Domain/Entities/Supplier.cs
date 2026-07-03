@@ -12,9 +12,6 @@ namespace MiniInventory.Domain.Entities
         public string? Address { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
-
-        // Navigation property (one-to-many)
-        // Initialize to avoid null reference warnings
         public virtual ICollection<Item> Items { get; set; } = new List<Item>();
     }
 }
