@@ -1,20 +1,26 @@
 import { useEffect, useState, useMemo } from 'react';
 import API from '../api/api';
-import { AlertTriangle, Package, Search, FileSpreadsheet, Printer, Plus, CheckCircle } from 'lucide-react';
+import { AlertTriangle, Package, Search, FileSpreadsheet, Printer, Plus, CheckCircle, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const LowStock = () => {
   const [lowStockItems, setLowStockItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filterLevel, setFilterLevel] = useState('');
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await API.get('/Stock/low-stock');
-        const data = response.data.data || [];
-        console.log('Low Stock Data:', data); // ✅ Now shows currentBalance!
-        setLowStockItems(data);
+        const [lowStockRes, categoriesRes] = await Promise.all([
+          API.get('/Stock/low-stock'),
+          API.get('/Category'),
+        ]);
+
+        setLowStockItems(lowStockRes.data.data || []);
+        setCategories(categoriesRes.data.data || []);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching low stock:', error);
@@ -24,17 +30,10 @@ const LowStock = () => {
     fetchData();
   }, []);
 
-  // ✅ Now currentBalance is available from the API!
-  const outOfStockCount = lowStockItems.filter(item => Number(item.currentBalance) === 0).length;
-  const lowStockCount = lowStockItems.filter(item => Number(item.currentBalance) > 0 && Number(item.currentBalance) < Number(item.reorderLevel)).length;
-  const totalIssues = outOfStockCount + lowStockCount;
-
   const getStatus = (item) => {
     if (item.stockStatus) return item.stockStatus;
-    const balance = Number(item.currentBalance);
-    const reorder = Number(item.reorderLevel);
-    if (balance === 0) return 'Out of Stock';
-    if (balance < reorder) return 'Low Stock';
+    if (Number(item.currentBalance) === 0) return 'Out of Stock';
+    if (Number(item.currentBalance) < Number(item.reorderLevel)) return 'Low Stock';
     return 'Good Stock';
   };
 
@@ -47,16 +46,39 @@ const LowStock = () => {
     return colors[status] || 'bg-gray-100 text-gray-700';
   };
 
+  // ✅ Apply filters
   const filteredData = useMemo(() => {
-    if (!searchTerm.trim()) return lowStockItems;
-    const term = searchTerm.toLowerCase();
-    return lowStockItems.filter(
-      (item) =>
-        item.itemName?.toLowerCase().includes(term) ||
-        item.itemCode?.toLowerCase().includes(term)
-    );
-  }, [lowStockItems, searchTerm]);
+    let filtered = lowStockItems;
 
+    // Search filter
+    if (searchTerm.trim()) {
+      const term = searchTerm.toLowerCase();
+      filtered = filtered.filter(
+        (item) =>
+          item.itemName?.toLowerCase().includes(term) ||
+          item.itemCode?.toLowerCase().includes(term)
+      );
+    }
+
+    // Category filter
+    if (filterCategory) {
+      filtered = filtered.filter((item) => item.categoryName === filterCategory);
+    }
+
+    // Stock Level filter
+    if (filterLevel) {
+      filtered = filtered.filter((item) => getStatus(item) === filterLevel);
+    }
+
+    return filtered;
+  }, [lowStockItems, searchTerm, filterCategory, filterLevel]);
+
+  // Stats for the alert banner
+  const outOfStockCount = filteredData.filter(item => Number(item.currentBalance) === 0).length;
+  const lowStockCount = filteredData.filter(item => Number(item.currentBalance) > 0 && Number(item.currentBalance) < Number(item.reorderLevel)).length;
+  const totalIssues = outOfStockCount + lowStockCount;
+
+  // ✅ Export Excel (uses filteredData)
   const exportToExcel = () => {
     const headers = ['Book', 'Category', 'Current Stock', 'Reorder Level', 'Supplier', 'Status'];
     const rows = filteredData.map(item => [
@@ -103,7 +125,7 @@ const LowStock = () => {
       `}</style>
 
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 no-print">
         <div>
           <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
             <AlertTriangle className="w-8 h-8 text-amber-500" />
@@ -126,9 +148,9 @@ const LowStock = () => {
         </div>
       </div>
 
-      {/* ✅ Alert Banner - Now showing the correct counts */}
+      {/* Alert Banner */}
       {totalIssues === 0 ? (
-        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 flex items-center gap-4">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 flex items-center gap-4 no-print">
           <div className="p-2 bg-emerald-100 rounded-full">
             <CheckCircle className="w-6 h-6 text-emerald-600" />
           </div>
@@ -138,7 +160,7 @@ const LowStock = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-center gap-4">
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-center gap-4 no-print">
           <div className="p-2 bg-amber-100 rounded-full">
             <AlertTriangle className="w-6 h-6 text-amber-600" />
           </div>
@@ -159,16 +181,41 @@ const LowStock = () => {
         </div>
       )}
 
-      {/* Search */}
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search books by code or name..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full border border-gray-300 rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-        />
+      {/* Filters - Hidden when printing */}
+      <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 no-print">
+        <div className="relative flex-1 min-w-[180px]">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search books by code or name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+          />
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Filter className="w-4 h-4 text-gray-400" />
+          <select
+            value={filterCategory}
+            onChange={(e) => setFilterCategory(e.target.value)}
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white"
+          >
+            <option value="">All Categories</option>
+            {categories.map(cat => (
+              <option key={cat.categoryId} value={cat.categoryName}>{cat.categoryName}</option>
+            ))}
+          </select>
+          <select
+            value={filterLevel}
+            onChange={(e) => setFilterLevel(e.target.value)}
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white"
+          >
+            <option value="">All Stock Levels</option>
+            <option value="Out of Stock">Out of Stock</option>
+            <option value="Low Stock">Low Stock</option>
+          </select>
+        </div>
       </div>
 
       {/* Report Table */}
@@ -201,7 +248,7 @@ const LowStock = () => {
               {filteredData.length === 0 ? (
                 <tr>
                   <td colSpan="7" className="px-4 py-8 text-center text-gray-400 text-sm">
-                    ✅ All items are well stocked
+                    {searchTerm || filterCategory || filterLevel ? 'No matching items found.' : '✅ All items are well stocked'}
                   </td>
                 </tr>
               ) : (
