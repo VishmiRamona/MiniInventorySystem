@@ -67,7 +67,7 @@ const Suppliers = () => {
     setShowAddForm(true);
   };
 
-  // ✅ Show custom delete dialog
+  // Show custom delete dialog
   const handleDeleteClick = (sup) => {
     setDeleteDialog({
       isOpen: true,
@@ -76,7 +76,7 @@ const Suppliers = () => {
     });
   };
 
-  // ✅ Execute deletion after confirmation
+  // Execute deletion after confirmation
   const handleConfirmDelete = async () => {
     try {
       await deleteSupplier(deleteDialog.id);

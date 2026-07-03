@@ -41,7 +41,7 @@ const StockBalance = () => {
     return colors[status] || 'bg-gray-100 text-gray-700';
   };
 
-  // ✅ Apply filters
+  // Apply filters
   const filteredData = balanceData.filter(item => {
     // Search filter
     const matchesSearch =
@@ -58,7 +58,7 @@ const StockBalance = () => {
   const totalStockOut = filteredData.reduce((sum, item) => sum + (item.totalStockOut || 0), 0);
   const totalBalance = filteredData.reduce((sum, item) => sum + (item.currentBalance || 0), 0);
 
-  // ✅ Export Excel (uses filteredData)
+  // Export Excel (uses filteredData)
   const exportToExcel = () => {
     const headers = ['Item Code', 'Item Name', 'Category', 'Total Stock In', 'Total Stock Out', 'Current Balance', 'Reorder Level', 'Stock Status'];
     const rows = filteredData.map(item => [

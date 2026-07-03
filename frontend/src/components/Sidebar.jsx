@@ -44,7 +44,7 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 bg-[#0F172A] text-white flex flex-col fixed top-0 left-0 h-full z-50">
-      {/* Logo Section - "Inventory System" REMOVED */}
+      {/* Logo */}
       <div className="p-4 border-b border-[#1E293B] flex items-center gap-3">
         <div className="p-2 bg-[#2563EB] rounded-lg flex-shrink-0">
           <BookOpen className="w-6 h-6 text-white" />

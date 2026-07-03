@@ -46,7 +46,7 @@ const LowStock = () => {
     return colors[status] || 'bg-gray-100 text-gray-700';
   };
 
-  // ✅ Apply filters
+  // Apply filters
   const filteredData = useMemo(() => {
     let filtered = lowStockItems;
 
@@ -78,7 +78,7 @@ const LowStock = () => {
   const lowStockCount = filteredData.filter(item => Number(item.currentBalance) > 0 && Number(item.currentBalance) < Number(item.reorderLevel)).length;
   const totalIssues = outOfStockCount + lowStockCount;
 
-  // ✅ Export Excel (uses filteredData)
+  // Export Excel (uses filteredData)
   const exportToExcel = () => {
     const headers = ['Book', 'Category', 'Current Stock', 'Reorder Level', 'Supplier', 'Status'];
     const rows = filteredData.map(item => [

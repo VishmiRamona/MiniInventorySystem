@@ -30,7 +30,7 @@ const Layout = () => {
           </div>
 
           <div className="flex items-center gap-4 flex-shrink-0">
-            {/* ✅ Notification Bell with Dropdown */}
+            {/* Notification Dropdown */}
             <NotificationDropdown />
 
             <div className="flex items-center gap-3 flex-shrink-0">

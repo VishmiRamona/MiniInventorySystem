@@ -281,7 +281,7 @@ const Dashboard = () => {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {lowStockItems.length === 0 ? (
-                <tr><td colSpan="5" className="px-4 py-8 text-center text-gray-400 text-sm">✅ All items are well stocked</td></tr>
+                <tr><td colSpan="5" className="px-4 py-8 text-center text-gray-400 text-sm">All items are well stocked</td></tr>
               ) : (
                 lowStockItems.slice(0, 5).map((item) => {
                   const status = item.currentBalance === 0 ? 'Out of Stock' : 'Low Stock';

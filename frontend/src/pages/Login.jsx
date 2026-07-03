@@ -29,7 +29,7 @@ const Login = () => {
   const [stats, setStats] = useState({ books: 0, publishers: 0, revenue: 0, users: 0 });
   const navigate = useNavigate();
 
-  // Fetch real books from database
+  // Fetch books from db
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -345,7 +345,7 @@ const Login = () => {
               </button>
             </form>
 
-            {/* ✅ Cleaned up footer - only what's necessary */}
+            {/* Footer  */}
             <div className="mt-6 text-center">
               <p className="text-xs text-gray-400">
                 Contact your administrator for access

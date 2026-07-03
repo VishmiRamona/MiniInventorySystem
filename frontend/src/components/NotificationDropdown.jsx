@@ -20,7 +20,7 @@ const NotificationDropdown = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // ✅ Get read notification IDs from localStorage
+  // Get read notification IDs from localStorage
   const getReadNotifications = () => {
     try {
       const read = localStorage.getItem('readNotifications');
@@ -30,7 +30,7 @@ const NotificationDropdown = () => {
     }
   };
 
-  // ✅ Save read notification IDs to localStorage
+  // Save read notification IDs to localStorage
   const saveReadNotifications = (ids) => {
     localStorage.setItem('readNotifications', JSON.stringify(ids));
   };
@@ -89,7 +89,7 @@ const NotificationDropdown = () => {
     }
   };
 
-  // ✅ Mark a single notification as read (save to localStorage)
+  // Mark a single notification as read (save to localStorage)
   const markAsRead = (id) => {
     const readIds = getReadNotifications();
     if (!readIds.includes(id)) {
@@ -103,7 +103,7 @@ const NotificationDropdown = () => {
     setUnreadCount(prev => Math.max(0, prev - 1));
   };
 
-  // ✅ Mark all as read (save all to localStorage)
+  // Mark all as read (save all to localStorage)
   const markAllAsRead = () => {
     const readIds = notifications.map(n => n.id);
     saveReadNotifications(readIds);
@@ -118,7 +118,7 @@ const NotificationDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  // ✅ Count unread notifications
+  // Count unread notifications
   const unreadNotifications = notifications.filter(n => !n.read);
 
   return (

@@ -101,7 +101,7 @@ const Items = () => {
     setShowAddForm(true);
   };
 
-  // ✅ Show custom delete dialog instead of browser confirm
+  // Show custom delete dialog
   const handleDeleteClick = (item) => {
     setDeleteDialog({
       isOpen: true,
@@ -110,7 +110,7 @@ const Items = () => {
     });
   };
 
-  // ✅ Execute deletion after confirmation
+  // Execute deletion after confirmation
   const handleConfirmDelete = async () => {
     try {
       await deleteItem(deleteDialog.itemId);
@@ -344,7 +344,7 @@ const Items = () => {
                         <Edit className="w-4 h-4" /> Edit
                       </button>
                       <button
-                        // ✅ Open custom dialog instead of browser confirm
+                        // Open custom delete dialog
                         onClick={() => handleDeleteClick(item)}
                         className="text-rose-500 hover:text-rose-700 font-medium transition-colors flex items-center gap-1 inline-flex"
                       >

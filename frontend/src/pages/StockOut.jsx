@@ -67,7 +67,7 @@ const StockOut = () => {
     setShowAddForm(true);
   };
 
-  // ✅ Filter stock out records based on search term
+  // Filter stock out records based on search term
   const filteredRecords = useMemo(() => {
     if (!searchTerm.trim()) return stockOutRecords;
     const term = searchTerm.toLowerCase();
@@ -186,7 +186,7 @@ const StockOut = () => {
         </div>
       )}
 
-      {/* ✅ SEARCH BAR ADDED */}
+      {/* Search filter */}
       <div className="mb-4 relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
         <input

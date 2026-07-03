@@ -61,7 +61,7 @@ const Categories = () => {
     setShowAddForm(true);
   };
 
-  // ✅ Show custom delete dialog
+  // Handle delete
   const handleDeleteClick = (cat) => {
     setDeleteDialog({
       isOpen: true,
@@ -70,7 +70,7 @@ const Categories = () => {
     });
   };
 
-  // ✅ Execute deletion after confirmation
+  // Confirm delete
   const handleConfirmDelete = async () => {
     try {
       await deleteCategory(deleteDialog.id);

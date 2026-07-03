@@ -9,7 +9,7 @@ import StockIn from './pages/StockIn';
 import StockOut from './pages/StockOut';
 import StockBalance from './pages/StockBalance';
 import LowStock from './pages/LowStock';
-import Users from './pages/Users';  // ✅ ONLY ONE IMPORT
+import Users from './pages/Users';
 
 const PrivateRoute = ({ element }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';

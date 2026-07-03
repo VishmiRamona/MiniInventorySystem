@@ -77,7 +77,7 @@ const StockIn = () => {
     setShowAddForm(true);
   };
 
-  // ✅ Filter stock in records based on search term
+  // Filter stock in records based on search term
   const filteredRecords = useMemo(() => {
     if (!searchTerm.trim()) return stockInRecords;
     const term = searchTerm.toLowerCase();
@@ -204,7 +204,7 @@ const StockIn = () => {
         </div>
       )}
 
-      {/* ✅ SEARCH BAR ADDED */}
+      {/* Search filter */}
       <div className="mb-4 relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
         <input
