@@ -46,11 +46,9 @@ const LowStock = () => {
     return colors[status] || 'bg-gray-100 text-gray-700';
   };
 
-  // Apply filters
   const filteredData = useMemo(() => {
     let filtered = lowStockItems;
 
-    // Search filter
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(
@@ -60,12 +58,10 @@ const LowStock = () => {
       );
     }
 
-    // Category filter
     if (filterCategory) {
       filtered = filtered.filter((item) => item.categoryName === filterCategory);
     }
 
-    // Stock Level filter
     if (filterLevel) {
       filtered = filtered.filter((item) => getStatus(item) === filterLevel);
     }
@@ -73,12 +69,10 @@ const LowStock = () => {
     return filtered;
   }, [lowStockItems, searchTerm, filterCategory, filterLevel]);
 
-  // Stats for the alert banner
   const outOfStockCount = filteredData.filter(item => Number(item.currentBalance) === 0).length;
   const lowStockCount = filteredData.filter(item => Number(item.currentBalance) > 0 && Number(item.currentBalance) < Number(item.reorderLevel)).length;
   const totalIssues = outOfStockCount + lowStockCount;
 
-  // Export Excel (uses filteredData)
   const exportToExcel = () => {
     const headers = ['Book', 'Category', 'Current Stock', 'Reorder Level', 'Supplier', 'Status'];
     const rows = filteredData.map(item => [
@@ -124,7 +118,6 @@ const LowStock = () => {
         }
       `}</style>
 
-      {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 no-print">
         <div>
           <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
@@ -133,22 +126,21 @@ const LowStock = () => {
           </h1>
           <p className="text-gray-500 mt-1">Books that need restocking attention</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link to="/stock/in">
-            <button className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all shadow-sm">
-              <Plus className="w-5 h-5" /> Add Stock In
+            <button className="flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all shadow-sm text-sm sm:text-base">
+              <Plus className="w-4 h-4 sm:w-5 sm:h-5" /> <span className="hidden sm:inline">Add Stock In</span><span className="sm:hidden">Add</span>
             </button>
           </Link>
-          <button onClick={exportToExcel} className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all text-sm">
-            <FileSpreadsheet className="w-4 h-4" /> Export Excel
+          <button onClick={exportToExcel} className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all text-sm">
+            <FileSpreadsheet className="w-4 h-4" /> <span className="hidden sm:inline">Export Excel</span><span className="sm:hidden">Excel</span>
           </button>
-          <button onClick={handlePrint} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all text-sm">
-            <Printer className="w-4 h-4" /> Print / PDF
+          <button onClick={handlePrint} className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all text-sm">
+            <Printer className="w-4 h-4" /> <span className="hidden sm:inline">Print / PDF</span><span className="sm:hidden">Print</span>
           </button>
         </div>
       </div>
 
-      {/* Alert Banner */}
       {totalIssues === 0 ? (
         <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 flex items-center gap-4 no-print">
           <div className="p-2 bg-emerald-100 rounded-full">
@@ -181,9 +173,8 @@ const LowStock = () => {
         </div>
       )}
 
-      {/* Filters - Hidden when printing */}
-      <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 no-print">
-        <div className="relative flex-1 min-w-[180px]">
+      <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 no-print">
+        <div className="relative w-full sm:w-auto flex-1 min-w-[180px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -194,12 +185,12 @@ const LowStock = () => {
           />
         </div>
 
-        <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-gray-400" />
+        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+          <Filter className="w-4 h-4 text-gray-400 hidden sm:block" />
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white"
+            className="flex-1 sm:flex-none border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white"
           >
             <option value="">All Categories</option>
             {categories.map(cat => (
@@ -209,7 +200,7 @@ const LowStock = () => {
           <select
             value={filterLevel}
             onChange={(e) => setFilterLevel(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white"
+            className="flex-1 sm:flex-none border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white"
           >
             <option value="">All Stock Levels</option>
             <option value="Out of Stock">Out of Stock</option>
@@ -218,7 +209,6 @@ const LowStock = () => {
         </div>
       </div>
 
-      {/* Report Table */}
       <div id="lowstock-report" className="bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
@@ -232,7 +222,7 @@ const LowStock = () => {
         </div>
 
         <div className="overflow-x-auto p-4">
-          <table className="w-full">
+          <table className="w-full min-w-[640px]">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Book</th>
