@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://localhost:7274/api',
+  baseURL: 'https://miniinventory-backend.azurewebsites.net',
   headers: {
     'Content-Type': 'application/json',
   },
