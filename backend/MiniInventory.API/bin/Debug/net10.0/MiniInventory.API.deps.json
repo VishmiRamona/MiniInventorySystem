@@ -11,8 +11,8 @@
           "Microsoft.AspNetCore.OpenApi": "10.0.4",
           "Microsoft.EntityFrameworkCore.Design": "10.0.9",
           "MiniInventory.Application": "1.0.0",
+          "MiniInventory.Infrastructure": "1.0.0",
           "MiniInventory.Shared": "1.0.0",
-          "Minilnventory.Infrastructure": "1.0.0",
           "Swashbuckle.AspNetCore": "10.2.3"
         },
         "runtime": {
@@ -834,15 +834,7 @@
           }
         }
       },
-      "MiniInventory.Shared/1.0.0": {
-        "runtime": {
-          "MiniInventory.Shared.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Minilnventory.Infrastructure/1.0.0": {
+      "MiniInventory.Infrastructure/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "10.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.9",
@@ -850,7 +842,15 @@
           "MiniInventory.Domain": "1.0.0"
         },
         "runtime": {
-          "Minilnventory.Infrastructure.dll": {
+          "MiniInventory.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MiniInventory.Shared/1.0.0": {
+        "runtime": {
+          "MiniInventory.Shared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1224,12 +1224,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MiniInventory.Shared/1.0.0": {
+    "MiniInventory.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Minilnventory.Infrastructure/1.0.0": {
+    "MiniInventory.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniInventory.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54bf9f04a5fd3101c84669f3d7e51a258d7cd44a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fba6d53e3e121e15008fd9d475b035ada5267866")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniInventory.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniInventory.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

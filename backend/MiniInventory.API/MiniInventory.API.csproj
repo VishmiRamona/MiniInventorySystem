@@ -17,7 +17,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\MiniInventory.Application\MiniInventory.Application.csproj" />
-		<ProjectReference Include="..\Minilnventory.Infrastructure\Minilnventory.Infrastructure.csproj" />
+		<ProjectReference Include="..\MiniInventory.Infrastructure\MiniInventory.Infrastructure.csproj" />
 		<ProjectReference Include="..\MiniInventory.Shared\MiniInventory.Shared.csproj" />
 	</ItemGroup>
 

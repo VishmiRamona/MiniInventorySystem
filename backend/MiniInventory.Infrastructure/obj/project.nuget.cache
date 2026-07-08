@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6fbRo7iVXOM=",
+  "dgSpecHash": "JaqC3/DIM1w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\Minilnventory.Infrastructure\\Minilnventory.Infrastructure.csproj",
+  "projectFilePath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Infrastructure\\MiniInventory.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

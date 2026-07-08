@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj": {}
+    "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj": {
+    "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj",
+        "projectUniqueName": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj",
         "projectName": "MiniInventory.Domain",
-        "projectPath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj",
+        "projectPath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj",
         "packagesPath": "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\obj\\",
+        "outputPath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

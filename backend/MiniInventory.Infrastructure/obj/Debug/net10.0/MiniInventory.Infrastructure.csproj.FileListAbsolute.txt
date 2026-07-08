@@ -1,0 +1,40 @@
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.deps.json
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.runtimeconfig.json
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.dll
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.pdb
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Application.dll
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Domain.dll
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Application.pdb
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Domain.pdb
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.AssemblyInfo.cs
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.sourcelink.json
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInve.CDF659A9.Up2Date
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.dll
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\refint\MiniInventory.Infrastructure.dll
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.pdb
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.genruntimeconfig.cache
+C:\Users\Vishmi Ramona\OneDrive\Desktop\Project CI\Mini Inventory System\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\ref\MiniInventory.Infrastructure.dll
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.deps.json
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.runtimeconfig.json
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.dll
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Infrastructure.pdb
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Application.dll
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Domain.dll
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Application.pdb
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\bin\Debug\net10.0\MiniInventory.Domain.pdb
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.csproj.AssemblyReference.cache
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.AssemblyInfoInputs.cache
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.AssemblyInfo.cs
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.sourcelink.json
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInve.CDF659A9.Up2Date
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.dll
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\refint\MiniInventory.Infrastructure.dll
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.pdb
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\MiniInventory.Infrastructure.genruntimeconfig.cache
+C:\Projects\MiniInventorySystem\backend\MiniInventory.Infrastructure\obj\Debug\net10.0\ref\MiniInventory.Infrastructure.dll

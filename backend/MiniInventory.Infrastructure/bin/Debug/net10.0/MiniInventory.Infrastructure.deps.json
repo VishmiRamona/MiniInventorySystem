@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "Minilnventory.Infrastructure/1.0.0": {
+      "MiniInventory.Infrastructure/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "10.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.9",
@@ -15,7 +15,7 @@
           "MiniInventory.Domain": "1.0.0"
         },
         "runtime": {
-          "Minilnventory.Infrastructure.dll": {}
+          "MiniInventory.Infrastructure.dll": {}
         }
       },
       "Azure.Core/1.47.1": {
@@ -944,7 +944,7 @@
     }
   },
   "libraries": {
-    "Minilnventory.Infrastructure/1.0.0": {
+    "MiniInventory.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

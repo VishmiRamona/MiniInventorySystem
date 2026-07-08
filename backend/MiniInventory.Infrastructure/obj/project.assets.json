@@ -3739,11 +3739,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\Minilnventory.Infrastructure\\Minilnventory.Infrastructure.csproj",
-      "projectName": "Minilnventory.Infrastructure",
-      "projectPath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\Minilnventory.Infrastructure\\Minilnventory.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Infrastructure\\MiniInventory.Infrastructure.csproj",
+      "projectName": "MiniInventory.Infrastructure",
+      "projectPath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Infrastructure\\MiniInventory.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\Minilnventory.Infrastructure\\obj\\",
+      "outputPath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3764,11 +3764,11 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Application\\MiniInventory.Application.csproj": {
-              "projectPath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Application\\MiniInventory.Application.csproj"
+            "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Application\\MiniInventory.Application.csproj": {
+              "projectPath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Application\\MiniInventory.Application.csproj"
             },
-            "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj": {
-              "projectPath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj"
+            "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj": {
+              "projectPath": "C:\\Projects\\MiniInventorySystem\\backend\\MiniInventory.Domain\\MiniInventory.Domain\\MiniInventory.Domain.csproj"
             }
           }
         }
