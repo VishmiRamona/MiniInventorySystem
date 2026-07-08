@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "iW+gytjqdAg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Vishmi Ramona\\OneDrive\\Desktop\\Project CI\\Mini Inventory System\\MiniInventorySystem\\backend\\MiniInventory.Application\\MiniInventory.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
+    "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.9\\microsoft.extensions.dependencyinjection.abstractions.10.0.9.nupkg.sha512",
+    "C:\\Users\\Vishmi Ramona\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.9\\microsoft.extensions.logging.abstractions.10.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
