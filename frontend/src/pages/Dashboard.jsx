@@ -173,7 +173,7 @@ const Dashboard = () => {
           <BarChart3 className="w-5 h-5 text-[#2563EB]" />
           Stock Trend (Top 6 Items)
         </h3>
-        <div className="h-64">
+        <div className="h-48 sm:h-64">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -197,7 +197,7 @@ const Dashboard = () => {
             <Link to="/stock/in" className="text-sm text-[#2563EB] hover:text-[#1D4ED8] font-medium">View All</Link>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[640px]">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-[#64748B] uppercase">Book</th>
@@ -233,7 +233,7 @@ const Dashboard = () => {
             <Link to="/stock/out" className="text-sm text-[#2563EB] hover:text-[#1D4ED8] font-medium">View All</Link>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[640px]">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-[#64748B] uppercase">Book</th>
@@ -269,7 +269,7 @@ const Dashboard = () => {
           <Link to="/stock/low-stock" className="text-sm text-[#2563EB] hover:text-[#1D4ED8] font-medium">View All</Link>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[640px]">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-medium text-[#64748B] uppercase">Book Name</th>
