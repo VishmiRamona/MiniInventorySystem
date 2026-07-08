@@ -48,9 +48,9 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         collapsed ? 'w-20' : 'w-64'
       }`}
     >
-      {/* Toggle & Logo area */}
+      {/* Header area */}
       <div className="flex items-center justify-between p-4 border-b border-[#1E293B]">
-        {/* Logo section - click to OPEN sidebar */}
+        {/* Logo - click to OPEN sidebar */}
         {!collapsed && (
           <div
             className="flex items-center gap-3 cursor-pointer"
@@ -76,13 +76,15 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           </div>
         )}
 
-        {/* 3-lines button - click to CLOSE sidebar */}
-        <button
-          onClick={() => setCollapsed(true)}
-          className="text-[#94A3B8] hover:text-white transition-colors flex-shrink-0 ml-auto"
-        >
-          <Menu className="w-5 h-5" />
-        </button>
+        {/* 3‑lines button - visible ONLY when sidebar is open */}
+        {!collapsed && (
+          <button
+            onClick={() => setCollapsed(true)}
+            className="text-[#94A3B8] hover:text-white transition-colors flex-shrink-0 ml-auto"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
       {/* Navigation */}
