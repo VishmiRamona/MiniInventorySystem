@@ -41,11 +41,15 @@ const StockBalance = () => {
     return colors[status] || 'bg-gray-100 text-gray-700';
   };
 
+  // Apply filters
   const filteredData = balanceData.filter(item => {
+    // Search filter
     const matchesSearch =
       item.itemName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.itemCode?.toLowerCase().includes(searchTerm.toLowerCase());
+    // Category filter
     const matchesCategory = filterCategory === '' || item.categoryName === filterCategory;
+    // Status filter
     const matchesStatus = filterStatus === '' || item.stockStatus === filterStatus;
     return matchesSearch && matchesCategory && matchesStatus;
   });
@@ -54,6 +58,7 @@ const StockBalance = () => {
   const totalStockOut = filteredData.reduce((sum, item) => sum + (item.totalStockOut || 0), 0);
   const totalBalance = filteredData.reduce((sum, item) => sum + (item.currentBalance || 0), 0);
 
+  // Export Excel (uses filteredData)
   const exportToExcel = () => {
     const headers = ['Item Code', 'Item Name', 'Category', 'Total Stock In', 'Total Stock Out', 'Current Balance', 'Reorder Level', 'Stock Status'];
     const rows = filteredData.map(item => [
@@ -101,6 +106,7 @@ const StockBalance = () => {
         }
       `}</style>
 
+      {/* Header with Filters */}
       <div className="no-print flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
@@ -109,18 +115,19 @@ const StockBalance = () => {
           </h1>
           <p className="text-sm text-gray-500">Complete inventory status and movements</p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <button onClick={exportToExcel} className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm">
-            <FileSpreadsheet className="w-4 h-4" /> <span className="hidden sm:inline">Export Excel</span><span className="sm:hidden">Excel</span>
+        <div className="flex gap-2">
+          <button onClick={exportToExcel} className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm">
+            <FileSpreadsheet className="w-4 h-4" /> Export Excel
           </button>
-          <button onClick={handlePrint} className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm">
-            <Printer className="w-4 h-4" /> <span className="hidden sm:inline">Print / PDF</span><span className="sm:hidden">Print</span>
+          <button onClick={handlePrint} className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm">
+            <Printer className="w-4 h-4" /> Print / PDF
           </button>
         </div>
       </div>
 
-      <div className="no-print flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-        <div className="relative w-full sm:w-auto flex-1 min-w-[180px]">
+      {/* Filters - Hidden when printing */}
+      <div className="no-print flex flex-wrap items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+        <div className="relative flex-1 min-w-[180px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -131,12 +138,12 @@ const StockBalance = () => {
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-          <Filter className="w-4 h-4 text-gray-400 hidden sm:block" />
+        <div className="flex items-center gap-2">
+          <Filter className="w-4 h-4 text-gray-400" />
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="flex-1 sm:flex-none border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2563EB] text-sm bg-white"
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2563EB] text-sm bg-white"
           >
             <option value="">All Categories</option>
             {categories.map(cat => (
@@ -146,7 +153,7 @@ const StockBalance = () => {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="flex-1 sm:flex-none border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2563EB] text-sm bg-white"
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2563EB] text-sm bg-white"
           >
             <option value="">All Statuses</option>
             <option value="Good Stock">Good Stock</option>
@@ -156,7 +163,9 @@ const StockBalance = () => {
         </div>
       </div>
 
+      {/* Report Content */}
       <div id="report-content" className="bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
+        {/* Report Header */}
         <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-gray-800">Stock Balance Report</h1>
@@ -168,8 +177,9 @@ const StockBalance = () => {
           </div>
         </div>
 
+        {/* Table */}
         <div className="overflow-x-auto p-4">
-          <table className="w-full min-w-[640px]">
+          <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Item Code</th>
@@ -218,6 +228,7 @@ const StockBalance = () => {
           </table>
         </div>
 
+        {/* Report Footer */}
         <div className="px-6 py-3 border-t border-gray-200 text-xs text-gray-400 flex justify-between">
           <span>Showing {filteredData.length} of {balanceData.length} items</span>
           <span>Generated: {new Date().toLocaleString()}</span>

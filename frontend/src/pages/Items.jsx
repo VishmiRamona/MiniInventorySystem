@@ -101,6 +101,7 @@ const Items = () => {
     setShowAddForm(true);
   };
 
+  // Show custom delete dialog
   const handleDeleteClick = (item) => {
     setDeleteDialog({
       isOpen: true,
@@ -109,6 +110,7 @@ const Items = () => {
     });
   };
 
+  // Execute deletion after confirmation
   const handleConfirmDelete = async () => {
     try {
       await deleteItem(deleteDialog.itemId);
@@ -149,6 +151,7 @@ const Items = () => {
 
   return (
     <div>
+      {/* Confirm Delete Dialog */}
       <ConfirmDialog
         isOpen={deleteDialog.isOpen}
         onClose={() => setDeleteDialog({ isOpen: false, itemId: null, itemName: '' })}
@@ -157,6 +160,7 @@ const Items = () => {
         message={`Are you sure you want to delete "${deleteDialog.itemName}"? This action cannot be undone.`}
       />
 
+      {/* Header */}
       <div className="flex flex-wrap items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
           <BookOpen className="w-8 h-8 text-purple-600" />
@@ -167,11 +171,11 @@ const Items = () => {
           className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all shadow-sm"
         >
           <Plus className="w-5 h-5" />
-          <span className="hidden sm:inline">Add New Book</span>
-          <span className="sm:hidden">Add</span>
+          Add New Book
         </button>
       </div>
 
+      {/* Add/Edit Form */}
       {showAddForm && (
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-200 relative">
           <button
@@ -195,7 +199,7 @@ const Items = () => {
             )}
           </h2>
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <input
               type="text"
               placeholder="Item Code (auto-generated)"
@@ -265,7 +269,7 @@ const Items = () => {
               onChange={(e) => setFormData({ ...formData, reorderLevel: e.target.value })}
               className="border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
-            <div className="flex gap-2 items-end lg:col-span-3">
+            <div className="flex gap-2 items-end md:col-span-3">
               <button
                 type="submit"
                 className={`px-6 py-2.5 rounded-lg text-white font-medium flex items-center gap-2 ${
@@ -289,6 +293,7 @@ const Items = () => {
         </div>
       )}
 
+      {/* Search */}
       <div className="mb-6 relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
         <input
@@ -300,9 +305,10 @@ const Items = () => {
         />
       </div>
 
+      {/* Item List */}
       <div className="bg-white rounded-2xl shadow-soft overflow-hidden border border-gray-100">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px]">
+          <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Code</th>
@@ -338,6 +344,7 @@ const Items = () => {
                         <Edit className="w-4 h-4" /> Edit
                       </button>
                       <button
+                        // Open custom delete dialog
                         onClick={() => handleDeleteClick(item)}
                         className="text-rose-500 hover:text-rose-700 font-medium transition-colors flex items-center gap-1 inline-flex"
                       >

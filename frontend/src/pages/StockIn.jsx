@@ -77,6 +77,7 @@ const StockIn = () => {
     setShowAddForm(true);
   };
 
+  // Filter stock in records based on search term
   const filteredRecords = useMemo(() => {
     if (!searchTerm.trim()) return stockInRecords;
     const term = searchTerm.toLowerCase();
@@ -97,6 +98,7 @@ const StockIn = () => {
 
   return (
     <div>
+      {/* Header */}
       <div className="flex flex-wrap items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
           <Package className="w-8 h-8 text-[#2563EB]" />
@@ -107,11 +109,11 @@ const StockIn = () => {
           className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all shadow-sm"
         >
           <Plus className="w-5 h-5" />
-          <span className="hidden sm:inline">Add Stock In Entry</span>
-          <span className="sm:hidden">Add</span>
+          Add Stock In Entry
         </button>
       </div>
 
+      {/* Add Form */}
       {showAddForm && (
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-200 relative">
           <button
@@ -187,6 +189,7 @@ const StockIn = () => {
         </div>
       )}
 
+      {/* Success/Error Messages */}
       {success && (
         <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-xl mb-6 flex items-center gap-2">
           <CheckCircle className="w-5 h-5" />
@@ -201,6 +204,7 @@ const StockIn = () => {
         </div>
       )}
 
+      {/* Search filter */}
       <div className="mb-4 relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
         <input
@@ -212,13 +216,14 @@ const StockIn = () => {
         />
       </div>
 
+      {/* Stock In Records Table */}
       <div className="bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-gray-700">Recent Stock In History</h3>
           <span className="text-sm text-gray-500">{filteredRecords.length} records</span>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px]">
+          <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">StockIn ID</th>
