@@ -8,11 +8,9 @@ import {
   PackageOpen,
   BarChart3,
   AlertTriangle,
-  Settings,
   LogOut,
   User,
-  Menu, // for toggle
-  X, // optional
+  Menu,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -50,10 +48,14 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         collapsed ? 'w-20' : 'w-64'
       }`}
     >
-      {/* Toggle button */}
+      {/* Toggle & Logo area */}
       <div className="flex items-center justify-between p-4 border-b border-[#1E293B]">
+        {/* Logo section - click to OPEN sidebar */}
         {!collapsed && (
-          <div className="flex items-center gap-3">
+          <div
+            className="flex items-center gap-3 cursor-pointer"
+            onClick={() => setCollapsed(false)}
+          >
             <div className="p-2 bg-[#2563EB] rounded-lg flex-shrink-0">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
@@ -64,14 +66,19 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           </div>
         )}
         {collapsed && (
-          <div className="flex items-center justify-center w-full">
+          <div
+            className="flex items-center justify-center w-full cursor-pointer"
+            onClick={() => setCollapsed(false)}
+          >
             <div className="p-2 bg-[#2563EB] rounded-lg flex-shrink-0">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
           </div>
         )}
+
+        {/* 3-lines button - click to CLOSE sidebar */}
         <button
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={() => setCollapsed(true)}
           className="text-[#94A3B8] hover:text-white transition-colors flex-shrink-0 ml-auto"
         >
           <Menu className="w-5 h-5" />
@@ -93,7 +100,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                   : 'text-[#94A3B8] hover:bg-[#1E293B] hover:text-white'
               } ${collapsed ? 'justify-center' : ''}`}
             >
-              <Icon className={`w-5 h-5 flex-shrink-0 ${collapsed ? '' : ''}`} />
+              <Icon className="w-5 h-5 flex-shrink-0" />
               {!collapsed && <span className="text-sm flex-1">{item.label}</span>}
               {!collapsed && isActive && (
                 <span className="ml-auto w-1 h-6 bg-white rounded-full"></span>
