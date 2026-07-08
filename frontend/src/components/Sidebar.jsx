@@ -11,10 +11,12 @@ import {
   Settings,
   LogOut,
   User,
+  Menu, // for toggle
+  X, // optional
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const Sidebar = () => {
+const Sidebar = ({ collapsed, setCollapsed }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [userRole, setUserRole] = useState('Staff');
@@ -43,20 +45,41 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-[#0F172A] text-white flex flex-col fixed top-0 left-0 h-full z-50">
-      {/* Logo */}
-      <div className="p-4 border-b border-[#1E293B] flex items-center gap-3">
-        <div className="p-2 bg-[#2563EB] rounded-lg flex-shrink-0">
-          <BookOpen className="w-6 h-6 text-white" />
-        </div>
-        <div>
-          <span className="text-xl font-bold text-white">BookStore</span>
-          <p className="text-xs text-[#94A3B8] mt-0.5">Role: {userRole || 'Loading...'}</p>
-        </div>
+    <aside
+      className={`fixed top-0 left-0 h-full bg-[#0F172A] text-white z-50 transition-all duration-300 ${
+        collapsed ? 'w-20' : 'w-64'
+      }`}
+    >
+      {/* Toggle button */}
+      <div className="flex items-center justify-between p-4 border-b border-[#1E293B]">
+        {!collapsed && (
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-[#2563EB] rounded-lg flex-shrink-0">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <span className="text-xl font-bold text-white">BookStore</span>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Role: {userRole || 'Loading...'}</p>
+            </div>
+          </div>
+        )}
+        {collapsed && (
+          <div className="flex items-center justify-center w-full">
+            <div className="p-2 bg-[#2563EB] rounded-lg flex-shrink-0">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+          </div>
+        )}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="text-[#94A3B8] hover:text-white transition-colors flex-shrink-0 ml-auto"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+      <nav className="flex-1 p-3 space-y-1 overflow-y-auto h-[calc(100%-120px)]">
         {navItems.filter(item => item.roles.includes(userRole || 'Staff')).map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -68,11 +91,11 @@ const Sidebar = () => {
                 isActive
                   ? 'bg-[#2563EB] text-white'
                   : 'text-[#94A3B8] hover:bg-[#1E293B] hover:text-white'
-              }`}
+              } ${collapsed ? 'justify-center' : ''}`}
             >
-              <Icon className="w-5 h-5 flex-shrink-0" />
-              <span className="text-sm">{item.label}</span>
-              {isActive && (
+              <Icon className={`w-5 h-5 flex-shrink-0 ${collapsed ? '' : ''}`} />
+              {!collapsed && <span className="text-sm flex-1">{item.label}</span>}
+              {!collapsed && isActive && (
                 <span className="ml-auto w-1 h-6 bg-white rounded-full"></span>
               )}
             </Link>
@@ -80,14 +103,16 @@ const Sidebar = () => {
         })}
       </nav>
 
-      {/* Bottom */}
+      {/* Bottom - Logout */}
       <div className="p-4 border-t border-[#1E293B]">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all"
+          className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all ${
+            collapsed ? 'justify-center' : ''
+          }`}
         >
-          <LogOut className="w-4 h-4" />
-          <span className="text-sm">Logout</span>
+          <LogOut className="w-4 h-4 flex-shrink-0" />
+          {!collapsed && <span className="text-sm">Logout</span>}
         </button>
       </div>
     </aside>

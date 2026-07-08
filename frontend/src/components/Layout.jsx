@@ -21,16 +21,14 @@ const Layout = () => {
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       {/* Main Content */}
-      <div className={`flex-1 flex flex-col min-h-screen overflow-y-auto transition-all duration-300 ${collapsed ? 'ml-[80px]' : 'ml-[260px]'}`}>
+      <div className={`flex-1 flex flex-col min-h-screen overflow-y-auto transition-all duration-300 ${collapsed ? 'ml-20' : 'ml-64'}`}>
         {/* Top Navigation */}
         <header className="h-[70px] min-h-[70px] max-h-[70px] bg-white shadow-[0px_1px_6px_rgba(0,0,0,0.08)] sticky top-0 z-40 flex items-center justify-between px-6 flex-shrink-0">
-          {/* Inventory Management System */}
           <div className="flex items-center gap-2">
             <span className="text-lg font-semibold text-gray-800">Inventory Management System</span>
           </div>
 
           <div className="flex items-center gap-4 flex-shrink-0">
-            {/* Notification Dropdown */}
             <NotificationDropdown />
 
             <div className="flex items-center gap-3 flex-shrink-0">
