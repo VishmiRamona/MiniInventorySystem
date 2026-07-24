@@ -16,32 +16,53 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<IEnumerable<Category>> GetAllAsync()
     {
-        return await _context.Categories.ToListAsync();
+        return await _context.Categories
+            .FromSqlRaw("EXEC usp_Category_GetAll")
+            .ToListAsync();
     }
 
     public async Task<Category?> GetByIdAsync(int id)
     {
-        return await _context.Categories.FindAsync(id);
+        return await _context.Categories
+            .FromSqlRaw("EXEC usp_Category_GetById @Id = {0}", id)
+            .FirstOrDefaultAsync();
     }
 
     public async Task<int> CreateAsync(Category category)
     {
-        _context.Categories.Add(category);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Category_Create @CategoryName = {0}, @Description = {1}, @IsActive = {2}",
+                category.CategoryName,
+                category.Description ?? (object)DBNull.Value,
+                category.IsActive);
+
+        return result;
     }
 
     public async Task<int> UpdateAsync(Category category)
     {
-        _context.Categories.Update(category);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Category_Update @CategoryId = {0}, @CategoryName = {1}, @Description = {2}, @IsActive = {3}",
+                category.CategoryId,
+                category.CategoryName,
+                category.Description ?? (object)DBNull.Value,
+                category.IsActive);
+
+        return result;
     }
 
     public async Task<int> DeleteAsync(int id)
     {
-        var category = await _context.Categories.FindAsync(id);
-        if (category == null) return 0;
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Category_Delete @CategoryId = {0}", id);
 
-        _context.Categories.Remove(category);
-        return await _context.SaveChangesAsync();
+        return result;
+    }
+
+    public async Task<IEnumerable<Category>> SearchAsync(string keyword)
+    {
+        return await _context.Categories
+            .FromSqlRaw("EXEC usp_Category_Search @Keyword = {0}", keyword ?? "")
+            .ToListAsync();
     }
 }
