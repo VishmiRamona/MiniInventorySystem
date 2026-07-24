@@ -41,22 +41,34 @@ public class StockInRepository : IStockInRepository
 
     public async Task<int> CreateAsync(StockIn stockIn)
     {
-        _context.StockIns.Add(stockIn);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_StockIn_Create @ItemId = {0}, @SupplierId = {1}, @Quantity = {2}, @CostPrice = {3}",
+                stockIn.ItemId,
+                stockIn.SupplierId,
+                stockIn.Quantity,
+                stockIn.CostPrice);
+
+        return result;
     }
 
     public async Task<int> UpdateAsync(StockIn stockIn)
     {
-        _context.StockIns.Update(stockIn);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_StockIn_Update @StockInId = {0}, @ItemId = {1}, @SupplierId = {2}, @Quantity = {3}, @CostPrice = {4}",
+                stockIn.StockInId,
+                stockIn.ItemId,
+                stockIn.SupplierId,
+                stockIn.Quantity,
+                stockIn.CostPrice);
+
+        return result;
     }
 
     public async Task<int> DeleteAsync(int id)
     {
-        var stockIn = await _context.StockIns.FindAsync(id);
-        if (stockIn == null) return 0;
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_StockIn_Delete @StockInId = {0}", id);
 
-        _context.StockIns.Remove(stockIn);
-        return await _context.SaveChangesAsync();
+        return result;
     }
 }
