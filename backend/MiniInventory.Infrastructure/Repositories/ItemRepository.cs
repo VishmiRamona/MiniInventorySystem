@@ -37,37 +37,63 @@ public class ItemRepository : IItemRepository
             return await GetAllAsync();
         }
 
+        var ids = await _context.Database
+            .SqlQueryRaw<int>("EXEC usp_Item_Search @Keyword = {0}", keyword)
+            .ToListAsync();
+
+        if (!ids.Any())
+            return new List<Item>();
+
         return await _context.Items
             .Include(i => i.Category)
             .Include(i => i.Supplier)
-            .Where(i => (i.ItemName != null && i.ItemName.Contains(keyword)) ||
-                        (i.ItemCode != null && i.ItemCode.Contains(keyword)) ||
-                        (i.Barcode != null && i.Barcode.Contains(keyword)))
+            .Where(i => ids.Contains(i.ItemId))
             .ToListAsync();
     }
 
     public async Task<int> CreateAsync(Item item)
     {
-        _context.Items.Add(item);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Item_Create @ItemCode = {0}, @Barcode = {1}, @ItemName = {2}, @CategoryId = {3}, @SupplierId = {4}, @CostPrice = {5}, @SellingPrice = {6}, @ReorderLevel = {7}, @IsActive = {8}",
+                item.ItemCode,
+                item.Barcode ?? (object)DBNull.Value,
+                item.ItemName,
+                item.CategoryId,
+                item.SupplierId,
+                item.CostPrice,
+                item.SellingPrice,
+                item.ReorderLevel,
+                item.IsActive);
+
+        return result;
     }
 
     public async Task<int> UpdateAsync(Item item)
     {
-        _context.Items.Update(item);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Item_Update @ItemId = {0}, @ItemCode = {1}, @Barcode = {2}, @ItemName = {3}, @CategoryId = {4}, @SupplierId = {5}, @CostPrice = {6}, @SellingPrice = {7}, @ReorderLevel = {8}, @IsActive = {9}",
+                item.ItemId,
+                item.ItemCode,
+                item.Barcode ?? (object)DBNull.Value,
+                item.ItemName,
+                item.CategoryId,
+                item.SupplierId,
+                item.CostPrice,
+                item.SellingPrice,
+                item.ReorderLevel,
+                item.IsActive);
+
+        return result;
     }
 
     public async Task<int> DeleteAsync(int id)
     {
-        var item = await _context.Items.FindAsync(id);
-        if (item == null) return 0;
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Item_Delete @ItemId = {0}", id);
 
-        _context.Items.Remove(item);
-        return await _context.SaveChangesAsync();
+        return result;
     }
 
-  
     public async Task<Category?> GetCategoryByIdAsync(int categoryId)
     {
         return await _context.Categories
