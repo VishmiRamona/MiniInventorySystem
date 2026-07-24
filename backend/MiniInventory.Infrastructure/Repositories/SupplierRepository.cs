@@ -26,23 +26,37 @@ public class SupplierRepository : ISupplierRepository
 
     public async Task<int> CreateAsync(Supplier supplier)
     {
-        _context.Suppliers.Add(supplier);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Supplier_Create @SupplierName = {0}, @ContactNumber = {1}, @Email = {2}, @Address = {3}, @IsActive = {4}",
+                supplier.SupplierName,
+                supplier.ContactNumber ?? (object)DBNull.Value,
+                supplier.Email ?? (object)DBNull.Value,
+                supplier.Address ?? (object)DBNull.Value,
+                supplier.IsActive);
+
+        return result;
     }
 
     public async Task<int> UpdateAsync(Supplier supplier)
     {
-        _context.Suppliers.Update(supplier);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Supplier_Update @SupplierId = {0}, @SupplierName = {1}, @ContactNumber = {2}, @Email = {3}, @Address = {4}, @IsActive = {5}",
+                supplier.SupplierId,
+                supplier.SupplierName,
+                supplier.ContactNumber ?? (object)DBNull.Value,
+                supplier.Email ?? (object)DBNull.Value,
+                supplier.Address ?? (object)DBNull.Value,
+                supplier.IsActive);
+
+        return result;
     }
 
     public async Task<int> DeleteAsync(int id)
     {
-        var supplier = await _context.Suppliers.FindAsync(id);
-        if (supplier == null) return 0;
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_Supplier_Delete @SupplierId = {0}", id);
 
-        _context.Suppliers.Remove(supplier);
-        return await _context.SaveChangesAsync();
+        return result;
     }
 
     public async Task<bool> HasStockInsAsync(int supplierId)
