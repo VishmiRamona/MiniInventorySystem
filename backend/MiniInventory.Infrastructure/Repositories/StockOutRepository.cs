@@ -38,22 +38,32 @@ public class StockOutRepository : IStockOutRepository
 
     public async Task<int> CreateAsync(StockOut stockOut)
     {
-        _context.StockOuts.Add(stockOut);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_StockOut_Create @ItemId = {0}, @Quantity = {1}, @Reason = {2}",
+                stockOut.ItemId,
+                stockOut.Quantity,
+                stockOut.Reason);
+
+        return result;
     }
 
     public async Task<int> UpdateAsync(StockOut stockOut)
     {
-        _context.StockOuts.Update(stockOut);
-        return await _context.SaveChangesAsync();
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_StockOut_Update @StockOutId = {0}, @ItemId = {1}, @Quantity = {2}, @Reason = {3}",
+                stockOut.StockOutId,
+                stockOut.ItemId,
+                stockOut.Quantity,
+                stockOut.Reason);
+
+        return result;
     }
 
     public async Task<int> DeleteAsync(int id)
     {
-        var stockOut = await _context.StockOuts.FindAsync(id);
-        if (stockOut == null) return 0;
+        var result = await _context.Database
+            .ExecuteSqlRawAsync("EXEC usp_StockOut_Delete @StockOutId = {0}", id);
 
-        _context.StockOuts.Remove(stockOut);
-        return await _context.SaveChangesAsync();
+        return result;
     }
 }
